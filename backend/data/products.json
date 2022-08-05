@@ -1,0 +1,50 @@
+[
+    {
+        "name":"iphone 13",
+        "description":"the newest iphone mobile ",
+        "price":"12.2",
+        "rating":4.5,
+        "images":[{
+            "public_id":"product/tznsferkjdfsjkfa",
+            "url":"product/tznsferkjdfsjkfa"
+        }],
+        "category":"electronics",
+        "seller":"ebay",
+        "numOfReviews":32,
+        "stock":12,
+        "reviews":[]
+    
+    },
+    {
+        "name":"iphone 13",
+        "description":"the newest iphone mobile ",
+        "price":"12.2",
+        "rating":4.5,
+        "images":[{
+            "public_id":"product/tznsferkjdfsjkfa",
+            "url":"product/tznsferkjdfsjkfa"
+        }],
+        "category":"electronics",
+        "seller":"ebay",
+        "numOfReviews":32,
+        "stock":12,
+        "reviews":[]
+    
+    },
+    {
+        "name":"iphone 13",
+        "description":"the newest iphone mobile ",
+        "price":"12.2",
+        "rating":4.5,
+        "images":[{
+            "public_id":"product/tznsferkjdfsjkfa",
+            "url":"product/tznsferkjdfsjkfa"
+        }],
+        "category":"electronics",
+        "seller":"ebay",
+        "numOfReviews":32,
+        "stock":12,
+        "reviews":[]
+    
+    }
+]
