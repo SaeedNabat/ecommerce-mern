@@ -1,7 +1,10 @@
 const Product = require('../models/product');
+const ErrorHandler = require('../utils/errorHandler');
+const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
+const ApiFeatures = require('../utils/apiFeatures');
 
 //create new product => /api/v1/product/new
-exports.newProduct = async (req, res) => {
+exports.newProduct = catchAsyncErrors(async (req, res) => {
   try {
     const product = await Product.create(req.body);
     res.status(201).json({
@@ -11,27 +14,31 @@ exports.newProduct = async (req, res) => {
   } catch (error){
     console.log(error);
   };
-};
+});
 
 // display all products => /api/v1/products
-exports.getProducts = async (req,res)=>{
-    const products = await Product.find();
+exports.getProducts = catchAsyncErrors(async (req,res)=>{
+    const resPerPage = 4;
+    const productCount = await Product.countDocuments();
+    const apiFeatures = new ApiFeatures(Product.find(),req.query).search().filter().pagination(resPerPage)
+    const products = await apiFeatures.query;
     return res.status(200).json({
         success:true,
         count:products.length,
-        products
+        products,
+        productCount
     })
-}
+})
 
 // display single product details => /api/v1/product/:id
-exports.getSingleProduct = async (req, res) => {
+exports.getSingleProduct = catchAsyncErrors(async (req, res,next) => {
     try {
         const product = await Product.findById(req.params.id);
         if(!product){
-            res.status(404).json({
-                success:true,
-                message:'product not found'
-        }); 
+         return next(new ErrorHandler(
+            'product not found',
+            404
+         ));
         }
         res.status(200).json({
             success:true,
@@ -40,10 +47,10 @@ exports.getSingleProduct = async (req, res) => {
     } catch (error){
         console.log(error.message);
     }
-}
+})
 
 // update product => /api/v1/product/:id
-exports.updateProduct = async (req, res) => {
+exports.updateProduct = catchAsyncErrors(async (req, res) => {
     try {
         let product = await Product.findById(req.params.id);
         if(!product){
@@ -62,11 +69,11 @@ exports.updateProduct = async (req, res) => {
     } catch (err) {
         res.status(500).json({success:false,message:err.message});
     }
-}
+})
 
 // delete product => /api/v1/product/:id
 
-exports.deleteProduct = async (req, res) => {
+exports.deleteProduct = catchAsyncErrors(async (req, res) => {
     const product = await Product.findById(req.params.id);
 
     if(!product){
@@ -82,4 +89,4 @@ exports.deleteProduct = async (req, res) => {
             message:"product deleted successfully"
         });
 
-    }
+    })
