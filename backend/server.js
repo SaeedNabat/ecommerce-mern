@@ -3,7 +3,6 @@ const dotenv = require('dotenv')
 
 
 const connectDatabase = require('./config/database')
-const {getProducts} = require('./controllers/productController')
 
 // handle uncaught exceptions
 process.on('uncaughtException', (err) => {
@@ -25,7 +24,7 @@ const server = app.listen(process.env.PORT,(err)=>{
 })
 
 process.on('unhandledRejection',err=>{
-    console.log(`ERROR: ${err.message}`);
+    console.log(`ERROR: ${err.stack}`);
     console.log('shutting down the server due to unhandled promise rejection')
     server.close(()=>{
         process.exit(1);
