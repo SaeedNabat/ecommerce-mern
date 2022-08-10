@@ -15,8 +15,9 @@ function App() {
       <div className="App">
      <Header/>
      <Routes>
-      <Route path="/" element={<Home/>} />
-      <Route path="/product/:id" element={<ProductDetails/>} />
+      <Route path="/" element={<Home/>} exact />
+      <Route path='/search/:keyword' element={<Home/>} exact /> 
+      <Route path="/product/:id" element={<ProductDetails/>} exact />
      </Routes>
     <Footer/>
     <ToastContainer

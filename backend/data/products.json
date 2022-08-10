@@ -1,9 +1,9 @@
 [
     {
-        "name":"iphone 13",
+        "name":"iphone 10",
         "description":"the newest iphone mobile ",
-        "price":"12.2",
-        "rating":4.5,
+        "price":12.2,
+        "ratings":4,
         "images":[{
             "public_id":"product/tznsferkjdfsjkfa",
             "url":"product/tznsferkjdfsjkfa"
@@ -12,14 +12,14 @@
         "seller":"ebay",
         "numOfReviews":32,
         "stock":12,
-        "reviews":[]
-    
+        "reviews":[],
+        "user":"62ee52cf6c1cd189784b5ba7"
     },
     {
-        "name":"iphone 13",
+        "name":"iphone 11",
         "description":"the newest iphone mobile ",
-        "price":"12.2",
-        "rating":4.5,
+        "price":12.2,
+        "ratings":1,
         "images":[{
             "public_id":"product/tznsferkjdfsjkfa",
             "url":"product/tznsferkjdfsjkfa"
@@ -28,23 +28,23 @@
         "seller":"ebay",
         "numOfReviews":32,
         "stock":12,
-        "reviews":[]
-    
+        "reviews":[],
+        "user":"62ee52cf6c1cd189784b5ba7"
     },
     {
-        "name":"iphone 13",
+        "name":"iphone 12",
         "description":"the newest iphone mobile ",
-        "price":"12.2",
-        "rating":4.5,
+        "price":12.2,
+        "ratings":3,
         "images":[{
             "public_id":"product/tznsferkjdfsjkfa",
             "url":"product/tznsferkjdfsjkfa"
         }],
-        "category":"phone",
+        "category":"cameras",
         "seller":"ebay",
         "numOfReviews":32,
         "stock":12,
-        "reviews":[]
-    
+        "reviews":[],
+        "user":"62ee52cf6c1cd189784b5ba7"
     }
 ]
