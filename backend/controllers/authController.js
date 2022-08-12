@@ -1,5 +1,5 @@
 const User = require('../models/user');
-
+const cloudinary = require('cloudinary');
 const ErrorHandler = require('../utils/errorHandler')
 
 const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
@@ -8,14 +8,20 @@ const sendEmail = require('../utils/sendEmail')
 const crypto = require('crypto')
 // Register user => /api/v1/register
 exports.registerUser = catchAsyncErrors(async (req,res,next)=>{
+    // const result = await cloudinary.v2.uploader.upload(req.body.avatar,{
+    //     folder:'avatars',
+    //     width:150,
+    //     crop:'scale'
+    // })
     const {name,email,password}=req.body;
+    console.log(req.body);
     const user = await User.create({
         name,
         email,
         password,
         avatar:{
-            public_id:"dfafdsfsfsfas",
-            url:"sdfasfasfasd"
+            public_id:'FDSFADFIJSAOFI32423JO',
+            url:'images/avatar.webp'
         }
     })
    
@@ -124,7 +130,7 @@ exports.updatePassword = catchAsyncErrors(async (req,res,next)=>{
     if(!isMatched) {
         return next(new ErrorHandler('old password is incorrect'))
     }
-    user.password = req.body.password;
+    user.password = req.body.Password;
     await user.save();
     sendToken(user,200,res);
 });
@@ -136,7 +142,20 @@ exports.updateProfile = catchAsyncErrors(async (req,res,next)=>{
         email:req.body.email
     }
 
-    //! Todo : update avatar
+//     if(req.body.avatar !== ''){
+//         const user = await User.findById(req.user.id);
+//         const image_id = user.avatar.public_id;
+//         const res = await cloudinary.v2.uploader.destroy(image_id);
+// const result = await cloudinary.v2.uploader.upload(req.body.avatar,{
+//         folder:'avatars',
+//         width:150,
+//         crop:'scale'
+//     })
+//         newUserData.avatar = {
+//             public_id:result.public_id,
+//             url:result.secure_url
+//         }
+//     }
     const user = await User.findByIdAndUpdate(
         req.user.id,
         newUserData,

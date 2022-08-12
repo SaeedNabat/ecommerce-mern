@@ -6,6 +6,7 @@ import MetaData from './layout/MetaData'
 import { useDispatch, useSelector } from 'react-redux';
 import {getProducts} from '../redux/productActions';
 import Product from './product/Product'
+import Login from './user/Login'
 import Loader from './layout/Loader'
 import { toast } from 'react-toastify';
 import {useParams} from 'react-router-dom'
