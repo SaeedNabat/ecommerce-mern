@@ -3,19 +3,20 @@ import Loader from '../layout/Loader';
 import MetaData from '../layout/MetaData';
 import { toast } from 'react-toastify';
 
-import {useNavigate,Link} from 'react-router-dom';
+import {useNavigate,Link,useSearchParams} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {login,clearErrors} from '../../redux/userActions'
-const Login = ()=>{
+const Login = ({location})=>{
+    const [searchParams,setSearchParams] = useSearchParams();
     const navigate = useNavigate();
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     const {isAuthenticated,error,loading} = useSelector(state=>state.auth)
-
+    const redirect = location.search ? location.search.split('=')[1]:'/'
     const dispatch = useDispatch();
     useEffect(()=>{
         if(isAuthenticated){
-            navigate('/')
+            navigate(redirect)
         }
         if(error){
             toast.error(error)
