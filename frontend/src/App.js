@@ -13,6 +13,8 @@ import Cart from './components/cart/Cart'
 import Shipping from './components/cart/Shipping'
 import Payment from './components/cart/Payment'
 import OrderSuccess from './components/cart/OrderSuccess'
+import ListOrders from './components/order/ListOrders'
+import OrderDetails from './components/order/OrderDetails'
 import ConfirmOrder from './components/cart/ConfirmOrder'
 import Profile from './components/user/Profile'
 import ProtectedRoute from './components/route/ProtectedRoute';
@@ -63,6 +65,8 @@ function App() {
       <ProtectedRoute path='/me' element={<Profile/>} exact />
       <ProtectedRoute path='/me/update' element={<UpdateProfile/>} exact />
       <ProtectedRoute path='/password/update' element={<UpdatePassword/>} exact />
+      <ProtectedRoute path='/orders/me' element={<ListOrders/>} exact />
+      <ProtectedRoute path='/order/:id' element={<OrderDetails/>} exact />
      </Routes>
     <Footer/>
     <ToastContainer
